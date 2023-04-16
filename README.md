@@ -1,4 +1,4 @@
-# Synthesizing Coherent Story with Auto-Regressive Latent Diffusion Models
+# Synthesizing Coherent Story with Auto-Regressive Latent Diffusion Models - reduced version for 40 GB GPU
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/synthesizing-coherent-story-with-auto/story-visualization-on-pororo)](https://paperswithcode.com/sota/story-visualization-on-pororo?p=synthesizing-coherent-story-with-auto) [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/synthesizing-coherent-story-with-auto/story-continuation-on-pororosv)](https://paperswithcode.com/sota/story-continuation-on-pororosv?p=synthesizing-coherent-story-with-auto) [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/synthesizing-coherent-story-with-auto/story-continuation-on-flintstonessv)](https://paperswithcode.com/sota/story-continuation-on-flintstonessv?p=synthesizing-coherent-story-with-auto) [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/synthesizing-coherent-story-with-auto/story-continuation-on-vist)](https://paperswithcode.com/sota/story-continuation-on-vist?p=synthesizing-coherent-story-with-auto)
 
@@ -14,6 +14,10 @@ conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch-lts
 git clone https://github.com/Flash-321/ARLDM.git
 cd ARLDM
 pip install -r requirements.txt
+```
+## Additionally, for reduced version:
+```
+pip install bitsandbytes
 ```
 ## Data Preparation
 * Download the PororoSV dataset [here](https://drive.google.com/file/d/11Io1_BufAayJ1BpdxxV2uJUvCcirbrNc/view?usp=sharing).
