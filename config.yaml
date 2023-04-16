@@ -1,6 +1,6 @@
 # device
 mode: train  # train sample
-gpu_ids: [ 0, 1, 2, 3 ]  # gpu ids
+gpu_ids: [ 0, 1, 2, 3, 4, 5, 7 ]  # gpu ids
 batch_size: 1  # batch size each item denotes one story
 num_workers: 4  # number of workers
 num_cpu_cores: -1  # number of cpu cores
@@ -17,9 +17,9 @@ init_lr: 1e-5  # initial learning rate
 warmup_epochs: 1  # warmup epochs
 max_epochs: 50  # max epochs
 train_model_file:  # model file for resume, none for train from scratch
-freeze_clip: False  # whether to freeze clip
-freeze_blip: False  # whether to freeze blip
-freeze_resnet: False  # whether to freeze resnet
+freeze_clip: True  # whether to freeze clip
+freeze_blip: True  # whether to freeze blip
+freeze_resnet: True  # whether to freeze resnet
 
 # sample
 test_model_file:  # model file for test
