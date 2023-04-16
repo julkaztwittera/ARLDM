@@ -23,6 +23,7 @@ from fid_utils import calculate_fid_given_features
 from models.blip_override.blip import blip_feature_extractor, init_tokenizer
 from models.diffusers_override.unet_2d_condition import UNet2DConditionModel
 from models.inception import InceptionV3
+import bitsandbytes as bnb
 
 
 class LightningDataset(pl.LightningDataModule):
@@ -163,7 +164,8 @@ class ARLDM(pl.LightningModule):
             param.requires_grad = True
 
     def configure_optimizers(self):
-        optimizer = torch.optim.AdamW(self.parameters(), lr=self.args.init_lr, weight_decay=1e-4)
+        #optimizer = torch.optim.AdamW(self.parameters(), lr=self.args.init_lr, weight_decay=1e-4)
+        optimizer = bnb.optim.Adam8bit(self.parameters(), lr=self.args.init_lr, weight_decay=1e-4)
         scheduler = LinearWarmupCosineAnnealingLR(optimizer,
                                                   warmup_epochs=self.args.warmup_epochs * self.steps_per_epoch,
                                                   max_epochs=self.args.max_epochs * self.steps_per_epoch)
@@ -415,7 +417,8 @@ def train(args: DictConfig) -> None:
         logger=logger,
         log_every_n_steps=1,
         callbacks=callback_list,
-        strategy=DDPStrategy(find_unused_parameters=False)
+        strategy=DDPStrategy(find_unused_parameters=False),
+        precision=32
     )
     trainer.fit(model, dataloader, ckpt_path=args.train_model_file)
 
